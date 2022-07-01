@@ -19,7 +19,6 @@ input:focus {
 input:valid {
   color: yellowgreen;
   border: 2px solid yellowgreen;
-
 }
 
 input:invalid {

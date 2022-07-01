@@ -1,4 +1,4 @@
-import { model, models, Schema } from 'mongoose';
+import { model, models, Schema } from 'mongoose'
 
 const schema = new Schema({
   url: {
@@ -6,18 +6,18 @@ const schema = new Schema({
     required: true,
     unique: true
   }
-});
+})
 
 schema.path('url').validate(async function (url: string) {
   if (!models.url) {
-    return false;
+    return false
   }
 
-  const count = await models.url.countDocuments({ url });
+  const count = await models.url.countDocuments({ url })
 
-  return !count;
-}, 'URL already exists');
+  return !count
+}, 'URL already exists')
 
-const URLModel = model('url', schema);
+const URLModel = model('url', schema)
 
-export default URLModel;
+export default URLModel

@@ -1,6 +1,6 @@
 <script>
-  import RedButton from '$lib/RedButton.svelte';
-  import YellowButton from '$lib/YellowButton.svelte';
+  import RedButton from '$lib/RedButton.svelte'
+  import YellowButton from '$lib/YellowButton.svelte'
 </script>
 
 <h1>Ping Bot</h1>

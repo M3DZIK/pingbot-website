@@ -1,6 +1,10 @@
 <script>
-  import Notifications from 'svelte-notifications';
+  import Notifications from 'svelte-notifications'
 </script>
+
+<svelte:head>
+  <title>PingBot</title>
+</svelte:head>
 
 <Notifications>
   <main>

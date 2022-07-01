@@ -1,5 +1,5 @@
 <script>
-  import '$lib/css/button.css';
+  import '$lib/css/button.css'
 </script>
 
 <button><slot /></button>

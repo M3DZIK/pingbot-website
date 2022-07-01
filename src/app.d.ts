@@ -5,7 +5,7 @@
 // and what to do when importing types
 declare namespace App {
   interface Locals {
-    userid: string;
+    userid: string
   }
 
   // interface Platform {}

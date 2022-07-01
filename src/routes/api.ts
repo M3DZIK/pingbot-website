@@ -1,107 +1,107 @@
-import type { RequestEvent } from "@sveltejs/kit"
-import axios from "axios"
-import dbConnect from "$lib/db/connect"
-import URLModel from "$lib/db/schema"
+import type { RequestEvent } from '@sveltejs/kit'
+import axios from 'axios'
+import dbConnect from '$lib/db/connect'
+import URLModel from '$lib/db/schema'
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function get() {
-    await dbConnect()
+  await dbConnect()
 
-    return {
-        body: {
-            db: await URLModel.find()
-        }
+  return {
+    body: {
+      db: await URLModel.find()
     }
+  }
 }
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function post(event: RequestEvent) {
-    const body = await event.request.json()
+  const body = await event.request.json()
 
-    if (!body || !body.url) {
-        return {
-            status: 400,
-            body: {
-                message: "Invalid body"
-            }
-        }
-    }
-
-    const url = body.url
-
-    try {
-        await axios.get(url)
-    } catch {
-        return {
-            status: 400,
-            body: {
-                message: 'Invalid URL'
-            }
-        }
-    }
-
-    await dbConnect()
-
-    const entry = new URLModel({ url });
-
-    try {
-        await entry.save()
-    } catch {
-        return {
-            status: 400,
-            body: {
-                message: 'Failed to insert URL (maybe already exists)'
-            }
-        }
-    }
-
+  if (!body || !body.url) {
     return {
-        body: {
-            message: `Added ${url}`
-        }
+      status: 400,
+      body: {
+        message: 'Invalid body'
+      }
     }
+  }
+
+  const url = body.url
+
+  try {
+    await axios.get(url)
+  } catch {
+    return {
+      status: 400,
+      body: {
+        message: 'Invalid URL'
+      }
+    }
+  }
+
+  await dbConnect()
+
+  const entry = new URLModel({ url })
+
+  try {
+    await entry.save()
+  } catch {
+    return {
+      status: 400,
+      body: {
+        message: 'Failed to insert URL (maybe already exists)'
+      }
+    }
+  }
+
+  return {
+    body: {
+      message: `Added ${url}`
+    }
+  }
 }
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function del(event: RequestEvent) {
-    const url = event.url.searchParams.get('url')
+  const url = event.url.searchParams.get('url')
 
-    if (!url) {
-        return {
-            status: 400,
-            body: {
-                message: "Invalid params"
-            }
-        }
+  if (!url) {
+    return {
+      status: 400,
+      body: {
+        message: 'Invalid params'
+      }
     }
+  }
 
-    console.log(url)
+  console.log(url)
 
-    await dbConnect()
+  await dbConnect()
 
-    try {
-        const deleted = await URLModel.findOneAndDelete({ url })
+  try {
+    const deleted = await URLModel.findOneAndDelete({ url })
 
-        if (deleted) {
-            return {
-                body: {
-                    message: `Deleted ${url}`
-                }
-            }
-        } else {
-            return {
-                status: 400,
-                body: {
-                    message: `URL does not exists`
-                }
-            }
+    if (deleted) {
+      return {
+        body: {
+          message: `Deleted ${url}`
         }
-    } catch {
-        return {
-            status: 400,
-            body: {
-                message: 'Failed to delete URL'
-            }
+      }
+    } else {
+      return {
+        status: 400,
+        body: {
+          message: `URL does not exists`
         }
+      }
     }
+  } catch {
+    return {
+      status: 400,
+      body: {
+        message: 'Failed to delete URL'
+      }
+    }
+  }
 }

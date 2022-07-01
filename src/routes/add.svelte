@@ -1,27 +1,27 @@
 <script lang="ts">
-  import { getNotificationsContext } from 'svelte-notifications';
-  import '$lib/css/button.css';
-  import '$lib/css/input.css';
-  import axios from '../axios';
+  import { getNotificationsContext } from 'svelte-notifications'
+  import '$lib/css/button.css'
+  import '$lib/css/input.css'
+  import axios from '../axios'
 
-  const { addNotification } = getNotificationsContext();
+  const { addNotification } = getNotificationsContext()
 
-  let url = '';
+  let url = ''
 
   async function submit() {
     const urlSubmit = url
 
-    url = '';
+    url = ''
 
     try {
-      let response = await axios.post('', { url: urlSubmit });
+      let response = await axios.post('', { url: urlSubmit })
 
       if (response.data.message) {
         addNotification({
           text: `Added: ${urlSubmit}`,
           position: 'bottom-center',
           removeAfter: 5000 // 5 seconds
-        });
+        })
       }
     } catch (err: any) {
       if (!err.response) {
@@ -30,7 +30,7 @@
           position: 'bottom-center',
           type: 'danger',
           removeAfter: 5000 // 5 seconds
-        });
+        })
 
         return
       }
