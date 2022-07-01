@@ -1,0 +1,27 @@
+input {
+  background: none;
+  border: 2px solid yellowgreen;
+  border-radius: 50px;
+  color: white;
+  overflow: hidden;
+  outline: none;
+  margin: 0;
+  width: 100%;
+  padding: 0.25rem 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: border 500ms;
+  text-align: center;
+}
+
+input:focus {
+  border: 2px solid yellowgreen;
+}
+
+input:valid {
+  color: yellowgreen;
+}
+
+input:invalid {
+  color: orangered;
+}
