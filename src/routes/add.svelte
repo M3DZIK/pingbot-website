@@ -9,40 +9,45 @@
   let url = '';
 
   async function submit() {
+    const urlSubmit = url
+
     url = '';
 
     try {
-      let response = await axios.post('', { url });
+      let response = await axios.post('', { url: urlSubmit });
 
-      if (response.data.data.message) {
+      if (response.data.message) {
         addNotification({
-          text: `Added: ${url}`,
+          text: `Added: ${urlSubmit}`,
           position: 'bottom-center',
-          removeAfter: 2000 // 2 seconds
+          removeAfter: 5000 // 5 seconds
         });
       }
     } catch (err: any) {
-      if (!err.data) {
+      if (!err.response) {
         addNotification({
           text: err.toString(),
           position: 'bottom-center',
           type: 'danger',
-          removeAfter: 2000 // 2 seconds
+          removeAfter: 5000 // 5 seconds
         });
 
-        return;
+        return
       }
 
-      if (err.data.response && err.data.response.data.message) {
-        return err.data.response.data.message;
-      } else {
-        return err.data.toString();
-      }
+      addNotification({
+        text: err.response.data.message,
+        position: 'bottom-center',
+        type: 'danger',
+        removeAfter: 5000 // 5 seconds
+      })
     }
   }
 </script>
 
 <form class="field" on:submit|preventDefault={submit}>
+  <h1>Add URL</h1>
+
   <input type="url" name="url" inputmode="url" placeholder="https://example.com" bind:value={url} />
 
   <button>Submit</button>

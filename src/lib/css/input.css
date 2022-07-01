@@ -1,8 +1,6 @@
 input {
   background: none;
-  border: 2px solid yellowgreen;
   border-radius: 50px;
-  color: white;
   overflow: hidden;
   outline: none;
   margin: 0;
@@ -20,8 +18,11 @@ input:focus {
 
 input:valid {
   color: yellowgreen;
+  border: 2px solid yellowgreen;
+
 }
 
 input:invalid {
   color: orangered;
+  border: 2px solid orangered;
 }

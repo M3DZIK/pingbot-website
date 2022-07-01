@@ -9,40 +9,47 @@
   let url = '';
 
   async function submit() {
+    const urlSubmit = url
+
     url = '';
 
     try {
-      let response = await axios.delete(`?url=${url}`);
+      console.log(urlSubmit)
 
-      if (response.data.data.message) {
+      let response = await axios.delete(`?url=${encodeURI(urlSubmit)}`);
+
+      if (response.data.message) {
         addNotification({
-          text: `Deleted: ${url}`,
+          text: `Deleted: ${urlSubmit}`,
           position: 'bottom-center',
-          removeAfter: 2000 // 2 seconds
+          removeAfter: 5000 // 5 seconds
         });
       }
     } catch (err: any) {
-      if (!err.data) {
+      if (!err.response) {
         addNotification({
           text: err.toString(),
           position: 'bottom-center',
           type: 'danger',
-          removeAfter: 2000 // 2 seconds
+          removeAfter: 5000 // 5 seconds
         });
 
-        return;
+        return
       }
 
-      if (err.data.response && err.data.response.data.message) {
-        return err.data.response.data.message;
-      } else {
-        return err.data.toString();
-      }
+      addNotification({
+        text: err.response.data.message,
+        position: 'bottom-center',
+        type: 'danger',
+        removeAfter: 5000 // 5 seconds
+      })
     }
   }
 </script>
 
 <form class="field" on:submit|preventDefault={submit}>
+  <h1>Delete URL</h1>
+
   <input type="url" name="url" inputmode="url" placeholder="https://example.com" bind:value={url} />
 
   <button>Submit</button>
@@ -56,11 +63,6 @@
   form {
     text-align: center;
     padding: 10px;
-  }
-
-  input {
-    color: red;
-    border: 2px solid red;
   }
 
   button {
