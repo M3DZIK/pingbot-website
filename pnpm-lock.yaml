@@ -9,7 +9,7 @@ specifiers:
   eslint: 8.21.0
   eslint-config-prettier: 8.5.0
   eslint-plugin-svelte3: 4.0.0
-  mongoose: 6.5.0
+  mongoose: 6.5.1
   prettier: 2.7.1
   prettier-plugin-svelte: 2.7.0
   svelte: 3.49.0
@@ -22,7 +22,7 @@ specifiers:
 
 dependencies:
   axios: 0.27.2
-  mongoose: 6.5.0
+  mongoose: 6.5.1
   svelte-notifications: 0.9.96
 
 devDependencies:
@@ -1504,8 +1504,8 @@ packages:
       saslprep: 1.0.3
     dev: false
 
-  /mongoose/6.5.0:
-    resolution: {integrity: sha512-swOX8ZEbmCeJaEs29B1j67StBIhuOccNNkipbVhsnLYYCDpNE7heM9W54MFGwN5es9tGGoxINHSzOhJ9kTOZGg==}
+  /mongoose/6.5.1:
+    resolution: {integrity: sha512-8C0213y279nrSp6Au+WB+l/VczcotMU65jalTJJxU6KYf/Kd8gNW9+B3giWNJOVd8VvKvUQG0suWv/Vngp/83A==}
     engines: {node: '>=12.0.0'}
     dependencies:
       bson: 4.6.5
