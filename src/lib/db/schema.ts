@@ -1,8 +1,6 @@
 import mongoose from 'mongoose'
 
-const { model, models, Schema } = mongoose
-
-const Collection = process.env.MONGODB_COLLECTION || 'url'
+const { model, Schema } = mongoose
 
 const schema = new Schema({
   url: {
@@ -12,16 +10,6 @@ const schema = new Schema({
   }
 })
 
-schema.path(Collection).validate(async function (url: string) {
-  if (!models.url) {
-    return false
-  }
-
-  const count = await models.url.countDocuments({ url })
-
-  return !count
-}, 'URL already exists')
-
-const URLModel = model(Collection, schema)
+const URLModel = model('url2', schema)
 
 export default URLModel
