@@ -4,7 +4,7 @@ import dbConnect from '$lib/db/connect'
 import URLModel from '$lib/db/schema'
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function get() {
+export async function GET() {
   await dbConnect()
 
   return {
@@ -15,7 +15,7 @@ export async function get() {
 }
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function post(event: RequestEvent) {
+export async function POST(event: RequestEvent) {
   const body = await event.request.json()
 
   if (!body || !body.url) {
@@ -63,7 +63,7 @@ export async function post(event: RequestEvent) {
 }
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function del(event: RequestEvent) {
+export async function DELETE(event: RequestEvent) {
   const url = event.url.searchParams.get('url')
 
   if (!url) {

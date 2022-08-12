@@ -1,4 +1,6 @@
-import { connect } from 'mongoose'
+import mongoose from 'mongoose'
+
+const { connect } = mongoose
 
 const { MONGODB_URI } = process.env
 

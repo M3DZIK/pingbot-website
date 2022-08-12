@@ -1,4 +1,6 @@
-import { model, models, Schema } from 'mongoose'
+import mongoose from 'mongoose'
+
+const { model, models, Schema } = mongoose
 
 const schema = new Schema({
   url: {
