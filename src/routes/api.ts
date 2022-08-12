@@ -31,7 +31,9 @@ export async function POST(event: RequestEvent) {
 
   try {
     await axios.get(url)
-  } catch {
+  } catch (e) {
+    console.error(e)
+
     return {
       status: 400,
       body: {
@@ -46,7 +48,9 @@ export async function POST(event: RequestEvent) {
 
   try {
     await entry.save()
-  } catch {
+  } catch (e) {
+    console.error(e)
+
     return {
       status: 400,
       body: {
@@ -96,7 +100,8 @@ export async function DELETE(event: RequestEvent) {
         }
       }
     }
-  } catch {
+  } catch (e) {
+    console.error(e)
     return {
       status: 400,
       body: {
