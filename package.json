@@ -14,24 +14,24 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
-    "@typescript-eslint/eslint-plugin": "5.33.0",
-    "@typescript-eslint/parser": "5.33.0",
-    "eslint": "8.22.0",
+    "@typescript-eslint/eslint-plugin": "5.43.0",
+    "@typescript-eslint/parser": "5.43.0",
+    "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-svelte3": "4.0.0",
     "prettier": "2.7.1",
-    "prettier-plugin-svelte": "2.7.0",
-    "svelte": "3.49.0",
-    "svelte-check": "2.8.0",
+    "prettier-plugin-svelte": "2.8.1",
+    "svelte": "3.53.1",
+    "svelte-check": "2.9.2",
     "svelte-preprocess": "4.10.7",
-    "tslib": "2.4.0",
-    "typescript": "4.7.4",
-    "vite": "3.0.7"
+    "tslib": "2.4.1",
+    "typescript": "4.9.3",
+    "vite": "3.2.4"
   },
   "type": "module",
   "dependencies": {
     "axios": "0.27.2",
-    "mongoose": "6.5.2",
-    "svelte-notifications": "0.9.96"
+    "mongoose": "6.7.2",
+    "svelte-notifications": "0.9.98"
   }
 }
